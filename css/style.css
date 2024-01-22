@@ -7,33 +7,39 @@
   --Purple: hsl(259, 100%, 65%);
   --Light-red: hsl(0, 100%, 67%);
 }
-
 @font-face {
-  font-family: 'Poppins', sans-serif;
+  font-family: Pop;
   src: url(./assets/fonts/Poppins-Regular.ttf);
 }
-
-* {
-  font-family: 'Poppins', sans-serif;
+ :root {
+  --primary-color: #4caf50;
+  --secondary-color: #fff;
+  --background-color: #f5f5f5;
+  --text-color: #333;
+  --toggle-checked-color: #4caf50;
+  --toggle-unchecked-color: #bbb;
 }
-
+* {
+  font-family: Pop !important;
+}
 body {
   display: flex;
   justify-content: center;
   background-color: var(--Off-white);
   align-items: center;
   min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
-
 .container {
-  background-color: var(--White);
+  background-color: var(--wht);
   width: 420px;
   max-width: 80%;
   padding: 30px;
   position: relative;
   border-bottom-right-radius: 150px;
 }
-
 input {
   width: 70px;
   padding: 10px;
@@ -42,7 +48,6 @@ input {
   /* border: none; */
   outline: none;
 }
-
 input:focus {
   border: 2px solid var(--Purple);
 }
@@ -53,7 +58,6 @@ small {
   font-weight: bold;
   text-transform: capitalize;
 }
-
 .submit-btn {
   width: 70px;
   height: 70px;
@@ -69,30 +73,55 @@ small {
   top: 60px;
   cursor: pointer;
 }
-
 .submit-btn:hover {
   background-color: black;
 }
-
 .output span {
   font-size: 2.75rem;
   color: var(--Purple);
   font-style: italic;
 }
-
 .input-container {
   display: flex;
   flex-direction: column;
   margin-left: 20px;
   margin-bottom: 20px;
 }
-
 .input-flex {
   display: flex;
   border-bottom: 2px solid var(--Off-white);
   margin-bottom: 20px;
 }
+@media (max-width: 768px) {
+  input {
+    width: 80%;
+  }
+  .output span {
+    font-size: 1.75rem;
+  }
+  .submit-btn {
+    width: 40px;
+    height: 40px;
+    right: 40%;
+    top: 90px;
+  }
+  .submit-btn img {
+    transform: scale(0.5);
+  }
+}
+.bday-container {
+  display: flex;
+  display: none;
+  border-radius: 15px;
+  border: 5px dotted var(--pink);
+}
 
+.bday {
+  width: 400px;
+  height: 600px;
+  border-radius: 15px;
+  box-shadow: 1px 7px 20px 10px hsl(259deg 100% 65% / 13%);
+}
 .toggle-container {
   display: flex;
   justify-content: center;
@@ -111,6 +140,7 @@ small {
   width: 0;
   height: 0;
 }
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -135,15 +165,15 @@ small {
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--toggle-checked-color);
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px var(--toggle-checked-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
@@ -158,31 +188,13 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-@media (max-width: 768px) {
-  input {
-    width: 80%;
-  }
-  .output span {
-    font-size: 1.75rem;
-  }
-  .submit-btn {
-    width: 40px;
-    height: 40px;
-    right: 40%;
-    top: 90px;
-  }
-  .submit-btn img {
-    transform: scale(0.5);
-  }
-}
-
 @media (prefers-color-scheme: white) {
   :root {
-    --primary-color: #4caf50;
-    --secondary-color: #fff;
-    --background-color: #2b2b2b;
-    --text-color: #ddd;
-    --toggle-checked-color: #4caf50;
-    --toggle-unchecked-color: #444;
+      --primary-color: #4caf50;
+      --secondary-color: #fff;
+      --background-color: #2b2b2b;
+      --text-color: #ddd;
+      --toggle-checked-color: #4caf50;
+      --toggle-unchecked-color: #444;
   }
 }
