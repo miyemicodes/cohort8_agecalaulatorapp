@@ -1,5 +1,3 @@
-
-
 /*
 INPUTS
 */
@@ -10,7 +8,7 @@ const inputMonth = document.querySelector("#month");
 const inputYears = document.querySelector("#year");
 
 /*
-OUTPUT
+ERROR
 */
 
 const errorsD = document.querySelector(".error-day");
@@ -24,6 +22,8 @@ OUTPUT
 const outputDay = document.querySelector(".output-day");
 const outputMonth = document.querySelector(".output-month");
 const outputYears = document.querySelector(".output-year");
+
+const birthdayImg = document.querySelector(".bday-container img");
 
 const Btn = document.querySelector(".submit-btn");
 
@@ -48,7 +48,7 @@ inputMonth.addEventListener("input", (event) => {
 });
 
 inputYears.addEventListener("input", (event) => {
-  if (inputYears.value > 2023 || inputYears.value < 1) {
+  if (inputYears.value > 2024 || inputYears.value < 1) {
     errorsY.textContent = "Invalid Year";
     isValid = false;
   } else {
@@ -103,34 +103,53 @@ function ageCalculator() {
   inputDay.value = "";
   inputMonth.value = "";
   inputYears.value = "";
+
+  if (days === 0 && months === 0) {
+    // birthdayImg.style.display = "block";
+    body.style.backgroundImage = "url('bday.png')";
+  } else {
+    outputDay.innerText = days;
+    outputMonth.innerText = months;
+    outputYears.innerText = years;
+  }
 }
 
 Btn.addEventListener("click", ageCalculator);
-  
-  /*
+
+/*
 TOGGLE
 */
-const toggle = document.getElementById('toggle');
-const bdayContainer = document.querySelector('.bday-container');
+const toggle = document.getElementById("toggle");
+const bdayContainer = document.querySelector(".bday-container");
 
-toggle.addEventListener('change', () => {
-    if (toggle.checked) {
-        document.documentElement.style.setProperty('--primary-color', '#4caf50');
-        document.documentElement.style.setProperty('--secondary-color', '#fff');
-        document.documentElement.style.setProperty('--background-color', '#2b2b2b');
-        document.documentElement.style.setProperty('--text-color', '#ddd');
-        document.documentElement.style.setProperty('--toggle-checked-color', '#4caf50');
-        document.documentElement.style.setProperty('--toggle-unchecked-color', '#444');
-        container.style.borderColor = '#4caf50';
-        
-    } else {
-        document.documentElement.style.setProperty('--primary-color', '#4caf50');
-        document.documentElement.style.setProperty('--secondary-color', '#fff');
-        document.documentElement.style.setProperty('--background-color', '#f5f5f5');
-        document.documentElement.style.setProperty('--text-color', '#333');
-        document.documentElement.style.setProperty('--toggle-checked-color', '#4caf50');
-        document.documentElement.style.setProperty('--toggle-unchecked-color', '#bbb');
-        container.style.borderColor = '#4caf50';
-        
-    }
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    document.documentElement.style.setProperty("--primary-color", "#4caf50");
+    document.documentElement.style.setProperty("--secondary-color", "#fff");
+    document.documentElement.style.setProperty("--background-color", "#2b2b2b");
+    document.documentElement.style.setProperty("--text-color", "#ddd");
+    document.documentElement.style.setProperty(
+      "--toggle-checked-color",
+      "#4caf50"
+    );
+    document.documentElement.style.setProperty(
+      "--toggle-unchecked-color",
+      "#444"
+    );
+    container.style.borderColor = "#4caf50";
+  } else {
+    document.documentElement.style.setProperty("--primary-color", "#4caf50");
+    document.documentElement.style.setProperty("--secondary-color", "#fff");
+    document.documentElement.style.setProperty("--background-color", "#f5f5f5");
+    document.documentElement.style.setProperty("--text-color", "#333");
+    document.documentElement.style.setProperty(
+      "--toggle-checked-color",
+      "#4caf50"
+    );
+    document.documentElement.style.setProperty(
+      "--toggle-unchecked-color",
+      "#bbb"
+    );
+    container.style.borderColor = "#4caf50";
+  }
 });
